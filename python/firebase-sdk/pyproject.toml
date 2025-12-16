@@ -1,0 +1,13 @@
+[project]
+name = "firebase-sdk"
+version = "0.1.0"
+readme = "README.md"
+authors = [
+    { name = "AlphaKR93", email = "dev@alpha93.kr" }
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.9.2,<0.10.0"]
+build-backend = "uv_build"
