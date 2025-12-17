@@ -1,5 +1,6 @@
-from httpx import Timeout
 from typing import TYPE_CHECKING, override
+
+from httpx import Timeout
 
 from .types import Cache
 
@@ -15,9 +16,9 @@ DEFAULT_TIMEOUT = Timeout(30.0)
 
 
 class BuildCache(Cache):
-    def __init__(self, endpoint: str, headers: Mapping[str, str], /) -> None:
+    def __init__(self, endpoint: str, headers: "Mapping[str, str]", /) -> None:
         from httpx import Client
-        
+
         self._endpoint = endpoint.rstrip("/") + "/"
         self._headers = headers
         self._client = Client(timeout=DEFAULT_TIMEOUT)
@@ -30,7 +31,7 @@ class BuildCache(Cache):
                 return None
             if r.status_code != 200:
                 raise RuntimeError(f"Failed to get cache: {r.status_code} {r.reason_phrase}")
-                
+
             cache_state = r.headers.get(HEADERS_VERCEL_CACHE_STATE)
             if cache_state and cache_state.lower() != "fresh":
                 return None
@@ -85,10 +86,10 @@ class BuildCache(Cache):
         if key in self:
             return self.get(key)
         raise KeyError(key)
-        
+
     @override
     def __setitem__(self, key: str, value: object, /):
         self.set(key, value)
-        
+
     __delitem__ = delete
     __contains__ = contains

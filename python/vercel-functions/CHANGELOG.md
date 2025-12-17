@@ -2,6 +2,11 @@
 
 ## 0.1
 
+### 0.1.4
+
+**Runtime Cache:**
+- Fixed remain runtime type issue, now it SHOULD work
+
 ### 0.1.3
 
 **Runtime Cache:**
