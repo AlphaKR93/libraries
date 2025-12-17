@@ -2,6 +2,10 @@
 
 ## Prototype
 
+### 0.0.3 - Added URLs
+
+Added URLs
+
 ### 0.0.2 - Added metadata
 
 Added some metadata
