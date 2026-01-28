@@ -1,0 +1,15 @@
+### JetBrains IDEs
+*.iml
+*.iws
+*.ipr
+
+### Java
+# Gradle
+/.gradle/
+build/
+
+# Kotlin caches
+/.kotlin/
+
+# Android
+*.jks
