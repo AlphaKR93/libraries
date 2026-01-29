@@ -2,6 +2,7 @@ package kr.alpha93.lyra
 
 import kr.alpha93.lyra.primitives.toBooleanExact
 
+
 /**
  * Gets the system property indicated by the specified [key].
  *
@@ -10,7 +11,7 @@ import kr.alpha93.lyra.primitives.toBooleanExact
  * @throws IllegalArgumentException If the [key] is empty.
  * @see System.getProperty
  */
-fun getString(key: String): String? =
+public fun getString(key: String): String? =
     System.getProperty(key)
 
 /**
@@ -22,7 +23,7 @@ fun getString(key: String): String? =
  * @throws IllegalArgumentException If the [key] is empty.
  * @see System.getProperty
  */
-fun getString(key: String, default: String): String =
+public fun getString(key: String, default: String): String =
     System.getProperty(key, default)
 
 // region === Boolean Properties ===
@@ -41,7 +42,7 @@ fun getString(key: String, default: String): String =
  * @see getBooleanStrict
  * @see java.lang.Boolean.getBoolean
  */
-fun getBoolean(key: String): Boolean? =
+public fun getBoolean(key: String): Boolean? =
     getString(key)?.toBoolean()
 
 /**
@@ -59,7 +60,7 @@ fun getBoolean(key: String): Boolean? =
  * @see getBooleanStrict
  * @see java.lang.Boolean.getBoolean
  */
-fun getBoolean(key: String, default: Boolean): Boolean =
+public fun getBoolean(key: String, default: Boolean): Boolean =
     getString(key)?.toBoolean() ?: default
 
 /**
@@ -80,7 +81,7 @@ fun getBoolean(key: String, default: Boolean): Boolean =
  * @see getBoolean
  * @see toBooleanExact
  */
-fun getBooleanStrict(key: String): Boolean? =
+public fun getBooleanStrict(key: String): Boolean? =
     getString(key)?.toBooleanExact()
 
 /**
@@ -102,7 +103,7 @@ fun getBooleanStrict(key: String): Boolean? =
  * @see getBoolean
  * @see toBooleanExact
  */
-fun getBooleanStrict(key: String, default: Boolean): Boolean =
+public fun getBooleanStrict(key: String, default: Boolean): Boolean =
     getString(key)?.toBooleanExact() ?: default
 
 // endregion
@@ -123,7 +124,7 @@ fun getBooleanStrict(key: String, default: Boolean): Boolean =
  * @return The [Byte] value of the system property.
  * @see getByteExact
  */
-fun getByte(key: String): Byte? =
+public fun getByte(key: String): Byte? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toByte)
 
 /**
@@ -141,7 +142,7 @@ fun getByte(key: String): Byte? =
  * @return The [Byte] value of the system property.
  * @see getByteExact
  */
-fun getByte(key: String, default: Byte): Byte =
+public fun getByte(key: String, default: Byte): Byte =
     getString(key)?.attempt(NumberFormatException::class, null, String::toByte) ?: default
 
 /**
@@ -158,7 +159,7 @@ fun getByte(key: String, default: Byte): Byte =
  * @return The [Byte] value of the system property.
  * @see getByte
  */
-fun getByteExact(key: String): Byte? =
+public fun getByteExact(key: String): Byte? =
     getString(key)?.toByte()
 
 /**
@@ -177,7 +178,7 @@ fun getByteExact(key: String): Byte? =
  * @return The [Byte] value of the system property.
  * @see getByte
  */
-fun getByteExact(key: String, default: Byte): Byte =
+public fun getByteExact(key: String, default: Byte): Byte =
     getString(key)?.toByte() ?: default
 
 // endregion
@@ -198,7 +199,7 @@ fun getByteExact(key: String, default: Byte): Byte =
  * @return The [Short] value of the system property.
  * @see getShortExact
  */
-fun getShort(key: String): Short? =
+public fun getShort(key: String): Short? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toShort)
 
 /**
@@ -216,7 +217,7 @@ fun getShort(key: String): Short? =
  * @return The [Short] value of the system property.
  * @see getShortExact
  */
-fun getShort(key: String, default: Short): Short =
+public fun getShort(key: String, default: Short): Short =
     getString(key)?.attempt(NumberFormatException::class, null, String::toShort) ?: default
 
 /**
@@ -233,7 +234,7 @@ fun getShort(key: String, default: Short): Short =
  * @return The [Short] value of the system property.
  * @see getShort
  */
-fun getShortExact(key: String): Short? =
+public fun getShortExact(key: String): Short? =
     getString(key)?.toShort()
 
 /**
@@ -252,7 +253,7 @@ fun getShortExact(key: String): Short? =
  * @return The [Short] value of the system property.
  * @see getShort
  */
-fun getShortExact(key: String, default: Short): Short =
+public fun getShortExact(key: String, default: Short): Short =
     getString(key)?.toShort() ?: default
 
 // endregion
@@ -274,7 +275,7 @@ fun getShortExact(key: String, default: Short): Short =
  * @see getIntExact
  * @see Integer.getInteger
  */
-fun getInt(key: String): Int? =
+public fun getInt(key: String): Int? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toInt)
 
 /**
@@ -293,7 +294,7 @@ fun getInt(key: String): Int? =
  * @see getIntExact
  * @see Integer.getInteger
  */
-fun getInt(key: String, default: Int): Int =
+public fun getInt(key: String, default: Int): Int =
     getString(key)?.attempt(NumberFormatException::class, null, String::toInt) ?: default
 
 /**
@@ -311,7 +312,7 @@ fun getInt(key: String, default: Int): Int =
  * @see getInt
  * @see Integer.getInteger
  */
-fun getIntExact(key: String): Int? =
+public fun getIntExact(key: String): Int? =
     getString(key)?.toInt()
 
 /**
@@ -331,7 +332,7 @@ fun getIntExact(key: String): Int? =
  * @see getInt
  * @see Integer.getInteger
  */
-fun getIntExact(key: String, default: Int): Int =
+public fun getIntExact(key: String, default: Int): Int =
     getString(key)?.toInt() ?: default
 
 // endregion
@@ -353,7 +354,7 @@ fun getIntExact(key: String, default: Int): Int =
  * @see getLongExact
  * @see java.lang.Long.getLong
  */
-fun getLong(key: String): Long? =
+public fun getLong(key: String): Long? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toLong)
 
 /**
@@ -372,7 +373,7 @@ fun getLong(key: String): Long? =
  * @see getLongExact
  * @see java.lang.Long.getLong
  */
-fun getLong(key: String, default: Long): Long =
+public fun getLong(key: String, default: Long): Long =
     getString(key)?.attempt(NumberFormatException::class, null, String::toLong) ?: default
 
 /**
@@ -390,7 +391,7 @@ fun getLong(key: String, default: Long): Long =
  * @see getLong
  * @see java.lang.Long.getLong
  */
-fun getLongExact(key: String): Long? =
+public fun getLongExact(key: String): Long? =
     getString(key)?.toLong()
 
 /**
@@ -410,7 +411,7 @@ fun getLongExact(key: String): Long? =
  * @see getLong
  * @see java.lang.Long.getLong
  */
-fun getLongExact(key: String, default: Long): Long =
+public fun getLongExact(key: String, default: Long): Long =
     getString(key)?.toLong() ?: default
 
 // endregion
@@ -431,7 +432,7 @@ fun getLongExact(key: String, default: Long): Long =
  * @return The [Float] value of the system property.
  * @see getFloatExact
  */
-fun getFloat(key: String): Float? =
+public fun getFloat(key: String): Float? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toFloat)
 
 /**
@@ -449,7 +450,7 @@ fun getFloat(key: String): Float? =
  * @return The [Float] value of the system property.
  * @see getFloatExact
  */
-fun getFloat(key: String, default: Float): Float =
+public fun getFloat(key: String, default: Float): Float =
     getString(key)?.attempt(NumberFormatException::class, null, String::toFloat) ?: default
 
 /**
@@ -466,7 +467,7 @@ fun getFloat(key: String, default: Float): Float =
  * @return The [Float] value of the system property.
  * @see getFloat
  */
-fun getFloatExact(key: String): Float? =
+public fun getFloatExact(key: String): Float? =
     getString(key)?.toFloat()
 
 /**
@@ -485,7 +486,7 @@ fun getFloatExact(key: String): Float? =
  * @return The [Float] value of the system property.
  * @see getFloat
  */
-fun getFloatExact(key: String, default: Float): Float =
+public fun getFloatExact(key: String, default: Float): Float =
     getString(key)?.toFloat() ?: default
 
 // endregion
@@ -506,7 +507,7 @@ fun getFloatExact(key: String, default: Float): Float =
  * @return The [Double] value of the system property.
  * @see getDoubleExact
  */
-fun getDouble(key: String): Double? =
+public fun getDouble(key: String): Double? =
     getString(key)?.attempt(NumberFormatException::class, null, String::toDouble)
 
 /**
@@ -524,7 +525,7 @@ fun getDouble(key: String): Double? =
  * @return The [Double] value of the system property.
  * @see getDoubleExact
  */
-fun getDouble(key: String, default: Double): Double =
+public fun getDouble(key: String, default: Double): Double =
     getString(key)?.attempt(NumberFormatException::class, null, String::toDouble) ?: default
 
 /**
@@ -541,7 +542,7 @@ fun getDouble(key: String, default: Double): Double =
  * @return The [Double] value of the system property.
  * @see getDouble
  */
-fun getDoubleExact(key: String): Double? =
+public fun getDoubleExact(key: String): Double? =
     getString(key)?.toDouble()
 
 /**
@@ -560,7 +561,7 @@ fun getDoubleExact(key: String): Double? =
  * @return The [Double] value of the system property.
  * @see getDouble
  */
-fun getDoubleExact(key: String, default: Double): Double =
+public fun getDoubleExact(key: String, default: Double): Double =
     getString(key)?.toDouble() ?: default
 
 // endregion

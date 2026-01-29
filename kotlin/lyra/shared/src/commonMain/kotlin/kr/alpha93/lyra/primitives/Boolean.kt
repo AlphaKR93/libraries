@@ -3,10 +3,10 @@ package kr.alpha93.lyra.primitives
 /**
  * Binary representation of a number.
  */
-val Boolean.binary: Int
+public val Boolean.binary: Int
     get() = if (this) 1 else 0
 
-fun Boolean.toInt(): Int =
+public fun Boolean.toInt(): Int =
     this.binary
 
 /**
@@ -21,7 +21,7 @@ fun Boolean.toInt(): Int =
  * @throws IllegalArgumentException If the string doesn't represent a boolean value.
  * @see toBooleanStrict
  */
-fun String.toBooleanExact(): Boolean = when {
+public fun String.toBooleanExact(): Boolean = when {
     equals("true", ignoreCase = true) -> true
     equals("false", ignoreCase = true) -> false
     else -> throw IllegalArgumentException("The string doesn't represent a boolean value: $this")

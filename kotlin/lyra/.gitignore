@@ -13,3 +13,4 @@ build/
 
 # Android
 *.jks
+/local.properties

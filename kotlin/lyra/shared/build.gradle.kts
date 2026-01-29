@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    `maven-publish`
 }
 
 kotlin {
@@ -18,6 +19,8 @@ kotlin {
         }
 
         jvmMain.dependencies {
+            api(project(":java"))
+
             implementation(kotlin("reflect"))
         }
     }

@@ -1,18 +1,26 @@
 plugins {
     alias(libs.plugins.android.library)
+    kotlin("android")
+    `maven-publish`
+}
+
+val minTarget = libs.versions.android.min.get().split('.').map { it.toInt() }
+val compileTarget = libs.versions.android.compile.get().split('.').map { it.toInt() }
+
+kotlin {
+    jvmToolchain(11)
+    explicitApi()
 }
 
 android {
-    namespace = "kr.alpha93.lyra.android"
+    namespace = "kr.alpha93.lyra"
     compileSdk {
-        val versions = libs.versions.android.target.get().split('.').map { it.toInt() }
-        version = release(versions.first()) { minorApiLevel = versions.last() }
+        version = release(compileTarget.first()) { minorApiLevel = compileTarget.last() }
     }
 
     defaultConfig {
         minSdk {
-            val versions = libs.versions.android.min.get().split('.').map { it.toInt() }
-            version = release(versions.first())
+            version = release(minTarget.first())
         }
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -28,9 +36,37 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            //withJavadocJar()
+        }
+    }
 }
 
 dependencies {
-    implementation(project(":shared"))
-    implementation(project(":java"))
+    api(project(":shared"))
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+
+    testImplementation(libs.junit)
+
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            artifactId = "android"
+            groupId = rootProject.group.toString()
+            version = rootProject.version.toString()
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
