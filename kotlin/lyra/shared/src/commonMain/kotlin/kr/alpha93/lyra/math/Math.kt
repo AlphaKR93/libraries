@@ -13,6 +13,11 @@ import kotlin.math.min
  */
 public const val TAU: Double = PI * 2.0
 
+@InlineOnly
+@Suppress("NOTHING_TO_INLINE")
+public inline fun Number.padStart(length: Int, padChar: Char = '0'): String =
+    this.toString().padStart(length, padChar)
+
 /**
  * Returns a signed string representation of a number.
  *

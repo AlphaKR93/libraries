@@ -1,4 +1,4 @@
-package kr.alpha93.lyra
+package kr.alpha93.lyra.jvm
 
 import kr.alpha93.lyra.primitives.toBooleanExact
 

@@ -1,2 +1,3 @@
-# dokdo
-Simple utility library for Kotlin & KotlinX.
+# Lyra
+
+Simple utility library for Kotlin Multiplatform.
